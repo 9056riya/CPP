@@ -1,0 +1,24 @@
+# VS Code
+.vscode/
+
+# Executables
+*.exe
+*.out
+
+# Object files
+*.o
+*.obj
+
+# Static and shared libraries
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# Debug files
+*.pdb
+
+# Temporary files
+*.tmp
+*.log

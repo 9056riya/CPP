@@ -16,34 +16,64 @@ public:
   }
 };
 class Solution{
-public:    
-    ListNode* insertAtHead(ListNode* head,int x){
-        ListNode* newNode=new ListNode(x,head);
+public: 
+
+  ListNode* insertAtHead(ListNode* head,int data){
+    ListNode* newNode=new ListNode(data,head);
         
-        head=newNode;
+    head=newNode;
+    return head;
+  }
+
+  ListNode* insertAtpos(ListNode* head,int data,int pos){
+    ListNode* newNode=new ListNode(data);
+    ListNode* temp=head;
+    int cnt=0;
+    while(cnt+1!=pos){
+      temp=temp->next;
+      cnt++;
     }
-    void printList(ListNode* head) {
-        ListNode* temp = head;
-        while (temp != nullptr) {
-            cout << temp->data << " ";
-            temp = temp->next;
-        }
-        cout << endl;
+    newNode->next=temp->next;  
+    temp->next=newNode;
+    return head;
+  }
+
+  ListNode* insertAtend(ListNode* head,int data){
+    ListNode* newNode=new ListNode(data);
+    if(head == nullptr) return newNode;
+    ListNode* temp=head;
+    while(temp->next!=NULL){
+      temp=temp->next;
     }
+  temp->next=newNode;
+  return head;
+  }
+
+  void printList(ListNode* head) {
+    ListNode* temp = head;
+    while (temp != nullptr) {
+      cout << temp->data << " ";
+      temp = temp->next;
+    }
+    cout << endl;
+  }
 };
 int main(){
-   Solution sol;
-   ListNode* head=new ListNode(5);
-   head->next=new ListNode(8);
+  Solution sol;
+  ListNode* head=new ListNode(1);
+  head->next=new ListNode(2);
    
-    cout << "Original List: ";
-    sol.printList(head);
+  cout << "Original List: ";
+  sol.printList(head);
 
-    // Inserting new node at head
-    head = sol.insertAtHead(head, 1);
+  
+  head = sol.insertAtHead(head, 0); // Inserting new node at head
 
-    cout << "After Insertion at Head: ";
-    sol.printList(head);
+  sol.insertAtpos(head,4,3);  //inserting at pos
 
-    return 0;
+ 
+  sol.insertAtend(head,5);  //inserting at end
+  cout << "After Insertion : ";
+  sol.printList(head);
+  return 0;
 }
